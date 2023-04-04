@@ -1,6 +1,6 @@
 {
   "extends": ["stylelint-config-standard"],
   "rules": {
-    "unit-allowed-list": ["px"]
+    "unit-allowed-list": ["px", "em", "%"]
   }
 }

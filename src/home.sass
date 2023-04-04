@@ -1,0 +1,113 @@
+.automation
+  padding: 190px 0
+
+  position: relative
+
+  .left
+    max-width: 510px
+
+    .title-page
+      margin-bottom: 32px
+
+    .text
+      max-width: 425px
+
+      display: block
+
+      margin-bottom: 71px
+
+      opacity: .6
+
+    .button
+      box-shadow: var(--shadow-2)
+
+  .right
+    position: absolute
+    top: 89.24px
+    left: 443.38px
+
+    z-index: -1
+
+    .img
+      display: block
+
+      position: absolute
+
+      &.shadow
+        height: 580px
+        width: 688.25px
+
+        top: 43.56px
+        left: 7px
+
+      &.background
+        height: 490.66px
+        width: 647.15px
+
+        top: 63.41px
+        left: 27.55px
+
+      &.man
+        height: 231.8px
+        width: 137.42px
+
+        top: 319.17px
+        left: 85.84px
+
+      &.platform
+        height: 190.3px
+        width: 279.28px
+
+        top: 261.24px
+        left: 181.62px
+
+      &.home
+        height: 272.612px
+        width: 337.482px
+
+        top: -1px
+        left: 334.62px
+
+      &.woman
+        height: 213.51px
+        width: 178.46px
+
+        top: 212.22px
+        left: 507.62px
+
+
+@media all and (min-width: 768px) and (max-width: 1279px)
+  .automation
+    .right
+      top: 126px
+      left: 170px
+
+      .img
+        &.shadow,
+        &.background,
+        &.man,
+        &.platform,
+        &.home,
+        &.woman
+          transform: scale(.6)
+
+        &.man
+          top: 269.17px
+          left: 165.84px
+
+        &.platform
+          top: 244.24px
+          left: 194.62px
+
+        &.home
+          top: 64px
+          left: 275.62px
+
+        &.woman
+          top: 203.22px
+          left: 410.62px
+
+@media all and (max-width: 767px)
+  .automation
+    .right
+      display: none

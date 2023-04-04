@@ -2,14 +2,32 @@
   &-page
     font-family: 'Galien', serif
     font-size: 64px
-    line-height: 74px
+    line-height: 116%
+    letter-spacing: .04rem
     color: var(--blue-1)
 
   &-section
     font-size: 36px
-    line-height: 46px
+    line-height: 128%
     
     &.blue
       color: var(--blue-2)
     &.white
       color: #fff
+
+.section
+  &-white
+    color: var(--blue-1)
+
+  &-blue
+    color: #fff
+
+@media all and (min-width: 768px) and (max-width: 1279px)
+  .title
+    &-page
+      font-size: 58px
+
+@media all and (max-width: 767px)
+  .title
+    &-page
+      font-size: 46px

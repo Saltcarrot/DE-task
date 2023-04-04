@@ -2,11 +2,13 @@
   font-family: 'Galien'
   src: url("../assets/fonts/GalienRegular.ttf") format('ttf')
   font-style: normal
+  font-weight: 300
 
 @font-face
   font-family: 'Gilroy'
   src: url("../assets/fonts/GilroyRegular.ttf") format('ttf')
   font-style: normal
+  font-weight: 300
 
 \:root
   --grey-1: #E5E5E5
@@ -27,4 +29,18 @@
 body
   font-family: 'Gilroy', sans-serif
   font-size: 16px
-  line-height: 26px
+  font-weight: 300
+  line-height: 162%
+  letter-spacing: 0.05em
+
+  overflow-x: hidden
+
+@media all and (max-width: 1279px)
+  body
+    font-size: 14px
+
+@media all and (min-width: 768px) and (max-width: 1279px)
+//
+
+@media all and (max-width: 767px)
+//
