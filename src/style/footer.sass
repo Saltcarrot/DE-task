@@ -1,4 +1,187 @@
 .footer
-  border-radius: 0 200px 0 0
+  padding-top: 91px
+  padding-bottom: 32px
 
-  background-color: var(--blue-2)
+  position: relative
+
+  color: #fff
+
+  &:before
+    height: 100%
+    width: 100%
+
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+
+    background-color: var(--blue-4)
+
+    z-index: -1
+
+  &:after
+    height: 100%
+    width: 94%
+
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+
+    border-radius: 0 200px 0 0
+
+    background-color: var(--blue-2)
+
+    z-index: -1
+
+  .container
+    padding-right: 80px
+
+  &-top
+    padding-bottom: 96px
+
+    display: flex
+    align-items: center
+    justify-content: space-between
+    
+    position: relative
+
+    border-bottom: 1px solid white
+    
+    &:after
+      height: 1px
+      width: 100%
+      
+      content: ''
+      position: absolute
+      top: 100%
+      right: 100%
+
+      background-color: #fff
+
+    .left
+      max-width: 460px
+
+      .title-section
+        margin-bottom: 32px
+
+    .button
+      padding: 15px 74px
+
+  &-middle
+    margin: 96px 0 32px 0
+
+    padding-right: 123px
+
+    display: flex
+    justify-content: space-between
+
+    .column
+      &-title
+        margin-bottom: 32px
+
+        font-size: 20px
+        line-height: 150%
+
+      .logo
+        height: 32px
+        width: 48px
+
+        margin-right: 15px
+
+        &-wrapper
+          margin-bottom: 32px
+
+          display: flex
+          align-items: center
+
+        &-title
+          font-size: 28px
+          line-height: 164%
+
+      .list
+        &-item
+          &:has(+ .list-item)
+            margin-bottom: 16px
+
+        &-link
+          display: block
+
+          transition: opacity .2s ease-out
+
+          &:hover
+            opacity: .6
+
+      .address
+        .list
+          padding-left: 25px
+
+          font-style: normal
+
+          &-item
+            &:has(+ .list-item)
+              margin-bottom: 24px
+
+          &-link
+            position: relative
+
+            &:before
+              height: 19px
+              width: 26px
+
+              position: absolute
+              top: 0
+              left: -25px
+
+            &.address-text:before
+              content: 'A.'
+
+            &.phone:before
+              content: 'T.'
+
+            &.email:before
+              content: 'E'
+
+        &-text:hover
+          opacity: 1
+
+  &-bottom
+    padding: 32px 0
+
+    opacity: .4
+
+@media all and (min-width: 768px) and (max-width: 1279px)
+  .footer
+    &:after
+      border-radius: 0 150px 0 0
+
+    .container
+      padding-right: 40px
+
+@media all and (max-width: 767px)
+  .footer
+    &:after
+      border-radius: 0 100px 0 0
+
+    .container
+      padding-right: 0
+
+    &-top
+      max-width: 330px
+
+      margin: 0 auto
+
+      flex-direction: column
+
+      text-align: center
+
+      .button
+        margin-top: 32px
+
+    &-middle
+      padding-right: 0
+
+      flex-direction: column
+
+      .column:has(+ .column)
+        margin-bottom: 32px
