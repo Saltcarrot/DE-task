@@ -60,7 +60,22 @@ module.exports = () => {
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'postcss-loader',
+            {
+              loader: "postcss-loader",
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    [
+                      "postcss-preset-env",
+                      {
+                        browsers: "last 3 versions",
+                        autoprefixer: { grid: true },
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
             'sass-loader',
           ],
         },
@@ -72,7 +87,6 @@ module.exports = () => {
           test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
           type: 'asset/inline',
         },
-
       ]
     }
   }
