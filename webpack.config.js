@@ -14,12 +14,12 @@ module.exports = () => {
       path: resolve(__dirname, 'dist'),
       filename:
         isProd
-          ? '[name].[hash].js'
+          ? '[name].[fullhash].js'
           : '[name].js',
       clean: true,
       assetModuleFilename:
         isProd
-          ? '[name].[hash][ext]'
+          ? '[name].[fullhash][ext]'
           : '[name][ext]',
     },
     devServer: {
@@ -93,7 +93,7 @@ module.exports = () => {
           generator: {
             filename:
               isProd
-                ? 'assets/images/[name].[hash][ext]'
+                ? 'assets/images/[name].[fullhash][ext]'
                 : 'assets/images/[name][ext]'
           }
         },
@@ -103,7 +103,7 @@ module.exports = () => {
           generator: {
             filename:
               isProd
-                ? 'assets/fonts/[name].[hash][ext]'
+                ? 'assets/fonts/[name].[fullhash][ext]'
                 : 'assets/fonts/[name][ext]'
           }
         },

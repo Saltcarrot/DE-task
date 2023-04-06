@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --node-env development",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env production",
-    "eslint": "npx eslint src"
+    "eslint": "npx eslint src",
+    "stylelint": "npx stylelint '**/*.sass'"
   },
   "author": "",
   "license": "ISC",
