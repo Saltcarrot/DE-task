@@ -1,4 +1,4 @@
-.automation
+.main
   padding: 190px 0
 
   .container
@@ -50,7 +50,7 @@
 
     z-index: -1
 
-.client
+.clients
   padding-top: 96px
   padding-bottom: 125.08px
 
@@ -96,7 +96,7 @@
 
       z-index: 2
 
-  &-logo
+  &-item
     height: 128px
     width: 25%
 
@@ -138,9 +138,105 @@
         &:after
           background-color: var(--blue-3)
 
+.features
+  padding: 192px 0 212px 0
+
+  .card
+    &-container
+      height: 525px
+      width: 100%
+
+      margin: 158px 0 541px 0
+
+      position: relative
+
+    &-item
+      height: 525px
+      width: 380px
+
+      padding: 48px
+
+      position: absolute
+
+      border-radius: 10px
+
+      background-color: #fff
+
+      box-shadow: var(--shadow-1)
+
+      &:nth-child(1)
+        top: 0
+        left: 80px
+
+      &:nth-child(2), &:nth-child(3)
+        left: 560px
+
+      &:nth-child(2)
+        top: 63%
+
+      &:nth-child(3)
+        top: calc(63% - 100% - 100px)
+
+    &-img
+      position: absolute
+      bottom: 0
+      right: 0
+
+      &.business
+        height: 132px
+        width: 182px
+
+      &.product
+        height: 131px
+        width: 156px
+
+      &.technology
+        height: 197px
+        width: 224px
+
+        right: -42%
+
+      &-container
+        height: 132px
+        width: 130.95px
+
+        margin: 0 auto 56px
+
+        position: relative
+
+    &-title
+      margin-bottom: 16px
+
+      font-size: 20px
+      line-height: 130%
+
+    &-description
+      margin-bottom: 32px
+
+    &-link
+      height: 30px
+
+      display: flex
+      align-items: center
+
+      font-size: 14px
+      line-height: 214%
+
+      color: var(--blue-4)
+
+      transition: color .2s ease-out
+
+      &:hover
+        color: var(--blue-3)
+
+      &:active
+        color: var(--blue-2)
+
+      .icon
+        margin-left: 28px
 
 @media all and (min-width: 768px) and (max-width: 1279px)
-  .automation
+  .main
     .bg-img
       top: -53.544px
       left: 216.028px
@@ -151,27 +247,48 @@
     &:after
       border-radius: 150px 0 0 0
 
-  .client
+  .clients
     &-top
       .description
         width: 440px
 
-    &-logo
+    &-item
       height: 100px
 
       font-size: 18px
 
+  .features
+    padding: 100px 0
+
+    .card
+      &-container
+        margin: 150px 0 320px 0
+
+      &-item
+        width: 350px
+
+        &:nth-child(1)
+          left: 0
+
+        &:nth-child(2), &:nth-child(3)
+          left: 380px
+
+        &:nth-child(2)
+          top: 63%
+
+        &:nth-child(3)
+          top: calc(63% - 100% - 30px)
+
 @media all and (max-width: 767px)
-  .automation
+  .main
     .bg-img
       display: none
-
 
   .section-blue
     &:after
       border-radius: 100px 0 0 0
 
-  .client
+  .clients
     padding: 46px 0
 
     &-top
@@ -180,7 +297,7 @@
       flex-direction: column
       justify-content: center
 
-      > *
+      .description
         text-align: center
 
       .title-section
@@ -189,5 +306,31 @@
       .description
         width: 100%
 
-    &-logo
+    &-item
       width: 50%
+
+  .features
+    padding: 50px 0
+
+    .card
+      &-container
+        height: auto
+
+        margin: 24px 0 0 0
+
+      &-item
+        height: auto
+        width: 100%
+
+        padding: 20px
+
+        position: static
+
+        &:has(+ .card-item)
+          margin-bottom: 24px
+
+      &-img, &-img-container
+        transform: scale(.9)
+
+      &-img-container
+        margin-bottom: 36px
