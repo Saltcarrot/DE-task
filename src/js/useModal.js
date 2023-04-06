@@ -16,7 +16,7 @@ export const useModal = (modalID, callBackOnClose) => {
     callBackOnClose()
   }
 
-  const onModalOpenHandler = () => {
+  const openModal = () => {
     body.classList.add('fixed')
     modalBg.classList.remove('hidden')
   }
@@ -29,5 +29,5 @@ export const useModal = (modalID, callBackOnClose) => {
   modalContainer.addEventListener('click', onModalContainerClickHandler)
   modalCloseBtn.addEventListener('click', onModalCloseHandler)
 
-  return { onModalOpenHandler, closeModal }
+  return { openModal, closeModal }
 }

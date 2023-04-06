@@ -1,4 +1,4 @@
-import { usePageScroll, useForm, useModal } from "./js";
+import { usePageScroll, useForm, useModal } from './js'
 import './style/index.sass'
 import './home.sass'
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         enableForm()
 
         if (res.id) {
-          resultModalText.innerHTML = 'Form sent successful!'
+          resultModalText.innerHTML = 'Your message successfully sent!'
           onResultModalOpenHandler()
         } else {
           resultModalText.innerHTML = 'Form sent unsuccessful'
@@ -41,19 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const { resetForm, disableForm, enableForm } = useForm(onSubmit)
 
   const {
-    onModalOpenHandler: onFormModalOpenHandler,
+    openModal: onFeedbackBtnCLickHandler,
     closeModal: closeFormModal
   } = useModal('feedback-modal', resetForm)
   const {
-    onModalOpenHandler: onResultModalOpenHandler,
+    openModal: onResultModalOpenHandler,
     closeModal: closeResultModal
   } = useModal('result-modal', () => {})
 
-  const closeResultModalHandler = () => {
+  const onCloseResultModalHandler = () => {
     closeResultModal()
     resultModalText.innerHTML = ''
   }
 
-  feedbackBtn.addEventListener('click', onFormModalOpenHandler)
-  resultModalCloseBtn.addEventListener('click', closeResultModalHandler)
+  feedbackBtn.addEventListener('click', onFeedbackBtnCLickHandler)
+  resultModalCloseBtn.addEventListener('click', onCloseResultModalHandler)
 })
