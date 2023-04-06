@@ -108,7 +108,7 @@
           line-height: 164%
 
       .list
-        &-item:has(+ .list-item)
+        &-item:not(:last-child)
           margin-bottom: 16px
 
         &-link
@@ -124,9 +124,6 @@
           padding-left: 25px
 
           font-style: normal
-
-          &-item:has(+ .list-item)
-            margin-bottom: 24px
 
           &-link
             position: relative
@@ -201,5 +198,5 @@
 
       flex-direction: column
 
-      .column:has(+ .column)
+      .column:not(:last-child)
         margin-bottom: 32px
