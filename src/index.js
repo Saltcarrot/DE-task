@@ -6,15 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
   usePageScroll()
 
   const onSubmit = (values) => {
-    console.log(values);
+    disableForm()
 
-    reset()
-    closeModal()
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: `New post`,
+        body: `${values.email} ${values.name} ${values.message}`,
+        userId: 1,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.id) {
+          closeModal()
+          resetForm()
+          enableForm()
+        }
+      })
   }
 
-  const { reset } = useForm(onSubmit)
+  const { resetForm, disableForm, enableForm } = useForm(onSubmit)
 
-  const { onModalOpenHandler, closeModal } = useModal(reset)
+  const { onModalOpenHandler, closeModal } = useModal(resetForm)
 
   const feedbackBtn = document.querySelector('.feedback-btn')
 

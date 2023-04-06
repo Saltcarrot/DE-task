@@ -46,12 +46,13 @@
     &::placeholder
       color: var(--blue-1-2)
 
-    &:hover
-      border-color: var(--blue-1)
+    &:not(:disabled)
+      &:hover
+        border-color: var(--blue-1)
 
-    &:focus
-      border-color: var(--blue-1)
-      outline-color: var(--blue-1)
+      &:focus
+        border-color: var(--blue-1)
+        outline-color: var(--blue-1)
 
     &.error
       color: var(--red-1)
