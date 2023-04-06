@@ -11,15 +11,15 @@ module.exports = () => {
     mode: isProd ? 'production' : 'development',
     entry: resolve(__dirname, 'src/index.js'),
     output: {
-      path: resolve(__dirname, 'dist'),
+      path: resolve(__dirname, 'docs'),
       filename:
         isProd
-          ? '[name].[fullhash].js'
+          ? '[name].[hash].js'
           : '[name].js',
       clean: true,
       assetModuleFilename:
         isProd
-          ? '[name].[fullhash][ext]'
+          ? '[name].[hash][ext]'
           : '[name][ext]',
     },
     devServer: {
@@ -93,7 +93,7 @@ module.exports = () => {
           generator: {
             filename:
               isProd
-                ? 'assets/images/[name].[fullhash][ext]'
+                ? 'assets/images/[name].[hash][ext]'
                 : 'assets/images/[name][ext]'
           }
         },
@@ -103,7 +103,7 @@ module.exports = () => {
           generator: {
             filename:
               isProd
-                ? 'assets/fonts/[name].[fullhash][ext]'
+                ? 'assets/fonts/[name].[hash][ext]'
                 : 'assets/fonts/[name][ext]'
           }
         },
