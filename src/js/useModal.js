@@ -1,9 +1,9 @@
-export const useModal = (callBackOnClose) => {
+export const useModal = (modalID, callBackOnClose) => {
   const body = document.querySelector('body')
 
-  const modalBg = document.querySelector('.modal-bg')
-  const modalContainer = document.querySelector('.modal-container')
-  const modalCloseBtn = document.querySelector('.modal-close-btn')
+  const modalBg = document.getElementById(modalID)
+  const modalContainer = modalBg.querySelector('.modal-container')
+  const modalCloseBtn = modalBg.querySelector('.modal-close-btn')
 
   const closeModal = () => {
     body.classList.remove('fixed')
