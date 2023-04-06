@@ -1,0 +1,96 @@
+.form
+  width: 428px
+
+  &-title
+    font-size: 20px
+    line-height: 150%
+
+  &-fields
+    margin: 48px 0 44px 0
+
+  &-group
+    &:has(+ .form-group)
+      margin-bottom: 12px
+
+  &-label, &-error
+    display: block
+
+  &-label
+    margin-bottom: 8px
+
+    font-size: 16px
+    line-height: 188%
+
+    opacity: .8
+
+    &.error
+      color: var(--red-1)
+
+  &-input
+    width: 100%
+
+    padding: 0 32px
+
+    border-radius: 10px
+    border: 1px solid var(--blue-3-4)
+    outline: 1px solid transparent
+
+    transition: border-color .2s ease-out, outline-color .2s ease-out
+
+    &:not(.textarea)
+      height: 72px
+
+    &.textarea
+      padding: 21px 32px
+
+    &::placeholder
+      color: var(--blue-1-2)
+
+    &:hover
+      border-color: var(--blue-1)
+
+    &:focus
+      border-color: var(--blue-1)
+      outline-color: var(--blue-1)
+
+    &.error
+      color: var(--red-1)
+      border-color: var(--red-1)
+
+      &:focus
+        outline-color: var(--red-1)
+
+  &-error
+    height: 20px
+
+    font-size: 14px
+    text-align: end
+    color: var(--red-1)
+
+  &-bottom .button
+    width: 100%
+
+    box-shadow: var(--shadow-1)
+@media all and (min-width: 768px) and (max-width: 1279px)
+  .form
+    &-input
+      padding: 0 24px
+
+      &:not(.textarea)
+        height: 50px
+
+      &.textarea
+        padding: 14px 24px
+
+@media all and (max-width: 767px)
+  .form
+    width: 300px
+
+    &-input
+      padding: 0 12px
+
+      &:not(.textarea)
+        height: 40px
+
+      &.textarea
+        padding: 8px 12px
