@@ -5,9 +5,13 @@ export const useModal = (callBackOnClose) => {
   const modalContainer = document.querySelector('.modal-container')
   const modalCloseBtn = document.querySelector('.modal-close-btn')
 
-  const onModalCloseHandler = () => {
+  const closeModal = () => {
     body.classList.remove('fixed')
     modalBg.classList.add('hidden')
+  }
+
+  const onModalCloseHandler = () => {
+    closeModal()
 
     callBackOnClose()
   }
@@ -25,5 +29,5 @@ export const useModal = (callBackOnClose) => {
   modalContainer.addEventListener('click', onModalContainerClickHandler)
   modalCloseBtn.addEventListener('click', onModalCloseHandler)
 
-  return { onModalOpenHandler }
+  return { onModalOpenHandler, closeModal }
 }

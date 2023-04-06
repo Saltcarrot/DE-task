@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(values);
 
     reset()
+    closeModal()
   }
 
   const { reset } = useForm(onSubmit)
 
-  const { onModalOpenHandler } = useModal(reset)
+  const { onModalOpenHandler, closeModal } = useModal(reset)
 
   const feedbackBtn = document.querySelector('.feedback-btn')
 
