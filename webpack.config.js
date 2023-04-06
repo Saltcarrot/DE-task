@@ -1,4 +1,4 @@
-const { resolve } = require("path");
+const { resolve } = require("path")
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
@@ -16,7 +16,11 @@ module.exports = () => {
         isProd
           ? '[name].[hash].js'
           : '[name].js',
-      clean: true
+      clean: true,
+      assetModuleFilename:
+        isProd
+          ? '[name].[hash][ext]'
+          : '[name][ext]',
     },
     devServer: {
       port: 3000,
@@ -45,6 +49,10 @@ module.exports = () => {
     },
     module: {
       rules: [
+        {
+          test: /\.html$/i,
+          loader: "html-loader",
+        },
         {
           test: /\.js?$/,
           exclude: /node_modules/,
@@ -80,12 +88,24 @@ module.exports = () => {
           ],
         },
         {
-          test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
+          test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
           type: 'asset/resource',
+          generator: {
+            filename:
+              isProd
+                ? 'assets/images/[name].[hash][ext]'
+                : 'assets/images/[name][ext]'
+          }
         },
         {
-          test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-          type: 'asset/inline',
+          test: /\.(woff(2)?|eot|ttf|otf|)$/,
+          type: 'asset/resource',
+          generator: {
+            filename:
+              isProd
+                ? 'assets/fonts/[name].[hash][ext]'
+                : 'assets/fonts/[name][ext]'
+          }
         },
       ]
     }
