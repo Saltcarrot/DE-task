@@ -134,9 +134,11 @@
 
         z-index: -1
 
-      &:hover
-        &:after
-          background-color: var(--blue-3)
+      &:hover:after
+        background-color: var(--blue-3)
+
+      &:active:after
+        background-color: var(--blue-2)
 
 .features
   padding: 192px 0 212px 0
@@ -236,21 +238,21 @@
         margin-left: 28px
 
 @media all and (min-width: 768px) and (max-width: 1279px)
-  .main
-    .bg-img
-      top: -53.544px
-      left: 216.028px
+  .main .bg-img
+    top: -53.544px
+    left: 216.028px
 
-      transform: scale(.6)
+    transform: scale(.6)
 
-  .section-blue
-    &:after
-      border-radius: 150px 0 0 0
+  .features, .clients
+    padding: 80px 0
+
+  .section-blue:after
+    border-radius: 150px 0 0 0
 
   .clients
-    &-top
-      .description
-        width: 440px
+    &-top .description
+      width: 440px
 
     &-item
       height: 100px
@@ -258,8 +260,6 @@
       font-size: 18px
 
   .features
-    padding: 100px 0
-
     .card
       &-container
         margin: 150px 0 320px 0
@@ -280,17 +280,16 @@
           top: calc(63% - 100% - 30px)
 
 @media all and (max-width: 767px)
-  .main
-    .bg-img
-      display: none
+  .main .bg-img
+    display: none
 
-  .section-blue
-    &:after
-      border-radius: 100px 0 0 0
+  .section-blue:after
+    border-radius: 100px 0 0 0
 
-  .clients
+  .features, .clients
     padding: 46px 0
 
+  .clients
     &-top
       margin-bottom: 46px
 

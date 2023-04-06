@@ -108,9 +108,8 @@
           line-height: 164%
 
       .list
-        &-item
-          &:has(+ .list-item)
-            margin-bottom: 16px
+        &-item:has(+ .list-item)
+          margin-bottom: 16px
 
         &-link
           display: block
@@ -126,9 +125,8 @@
 
           font-style: normal
 
-          &-item
-            &:has(+ .list-item)
-              margin-bottom: 24px
+          &-item:has(+ .list-item)
+            margin-bottom: 24px
 
           &-link
             position: relative
@@ -159,9 +157,8 @@
     opacity: .4
 
 @media all and (min-width: 768px) and (max-width: 1279px)
-  .footer
-    &:after
-      border-radius: 0 150px 0 0
+  .footer:after
+    border-radius: 0 150px 0 0
 
     .container
       padding-right: 40px
