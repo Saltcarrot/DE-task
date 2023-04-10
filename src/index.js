@@ -1,29 +1,22 @@
-import {usePageScroll, useForm, useModal, useFetch} from './js'
+import {usePageScroll, useForm, useModal, useFetch, useResultModal} from './js'
 import './style/index.sass'
 import './home.sass'
 
 document.addEventListener('DOMContentLoaded', () => {
   usePageScroll()
 
-  const feedbackBtn = document.querySelector('.feedback-btn')
-
-  const resultModal = document.getElementById('result-modal'),
-    resultModalText = resultModal.querySelector('.text'),
-    resultModalCloseBtn = resultModal.querySelector('.modal-close-btn')
+  const feedbackBtn = document.querySelector('[data-action-btn="feedback-btn"]')
 
   const onSubmit = (values) => {
     disableForm()
 
     fetchFeedbackData(values)
-      .then(res => {
-        resultModalText.innerHTML =
-          res
-            ? 'Your message successfully sent!'
-            : 'Form sent unsuccessful'
-      })
-      .catch(err => {
-        resultModalText.innerHTML = err
-      })
+      .then(res => setResultText(
+        res
+          ? 'Your message successfully sent!'
+          : 'Form sent unsuccessful'
+      ))
+      .catch(err => setResultText(err))
       .finally(() => {
         closeFormModal()
         resetForm()
@@ -47,9 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const onCloseResultModalHandler = () => {
     closeResultModal()
-    resultModalText.innerHTML = ''
+    setResultText('')
   }
 
+  const { setResultText } = useResultModal(onCloseResultModalHandler)
+
   feedbackBtn.addEventListener('click', onFeedbackBtnCLickHandler)
-  resultModalCloseBtn.addEventListener('click', onCloseResultModalHandler)
 })

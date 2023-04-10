@@ -11,7 +11,7 @@ module.exports = () => {
     mode: isProd ? 'production' : 'development',
     entry: resolve(__dirname, 'src/index.js'),
     output: {
-      path: resolve(__dirname, 'docs'),
+      path: resolve(__dirname, 'dist'),
       filename:
         isProd
           ? '[name].[hash].js'

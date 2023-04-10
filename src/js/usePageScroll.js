@@ -1,5 +1,5 @@
 export const usePageScroll = () => {
-  const header = document.querySelector('.header')
+  const header = document.querySelector('[data-header]')
 
   const onWindowScrollHandler = () => {
     if (window.scrollY > header.getBoundingClientRect().height)
