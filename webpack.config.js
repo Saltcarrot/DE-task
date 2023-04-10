@@ -11,7 +11,7 @@ module.exports = () => {
     mode: isProd ? 'production' : 'development',
     entry: pathTo('src/index.js'),
     output: {
-      path: pathTo('dist'),
+      path: pathTo('docs'),
       filename:
         isProd
           ? '[name].[hash].js'
@@ -25,7 +25,7 @@ module.exports = () => {
       static: {
         directory:
           isProd
-            ? pathTo('dist')
+            ? pathTo('docs')
             : pathTo('src')
       },
     },
