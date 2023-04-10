@@ -1,0 +1,54 @@
+.button {
+  padding: 15px 48px;
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 26px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 10px;
+
+  background-color: var(--blue-4);
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: background-color .2s ease-out;
+
+  &:hover {
+    background-color: var(--blue-3);
+  }
+
+  &:active {
+    background-color: var(--blue-2);
+  }
+
+  &:disabled {
+    background-color: var(--blue-5);
+
+    cursor: default;
+  }
+
+  &-icon {
+    height: 32px;
+    width: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+
+    cursor: pointer;
+
+    .icon {
+      height: 16px;
+      width: 24px;
+    }
+  }
+}

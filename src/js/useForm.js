@@ -32,38 +32,38 @@ export const useForm = (callbackOnSubmit) => {
 
   const checkInput = (input) => {
     switch (input.dataset.formInput) {
-      case 'email': {
-        if (
-          !input.value.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/)
-        ) {
-          setFieldGroupInvalid(input, 'Invalid email')
+    case 'email': {
+      if (
+        !input.value.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/)
+      ) {
+        setFieldGroupInvalid(input, 'Invalid email')
 
-          return false
-        }
-
-        setFieldGroupValid(input)
-        return true
+        return false
       }
-      case 'name': {
-        if (input.value.trim().split(' ').length !== 2) {
-          setFieldGroupInvalid(input, 'Invalid full name')
 
-          return false
-        }
+      setFieldGroupValid(input)
+      return true
+    }
+    case 'name': {
+      if (input.value.trim().split(' ').length !== 2) {
+        setFieldGroupInvalid(input, 'Invalid full name')
 
-        setFieldGroupValid(input)
-        return true
+        return false
       }
-      default: {
-        if (input.value === '') {
-          setFieldGroupInvalid(input, 'Required field')
 
-          return false
-        }
+      setFieldGroupValid(input)
+      return true
+    }
+    default: {
+      if (input.value === '') {
+        setFieldGroupInvalid(input, 'Required field')
 
-        setFieldGroupValid(input)
-        return true
+        return false
       }
+
+      setFieldGroupValid(input)
+      return true
+    }
     }
   }
 

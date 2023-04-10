@@ -9,18 +9,15 @@ module.exports = () => {
 
   return {
     mode: isProd ? 'production' : 'development',
-    entry: resolve(__dirname, 'src/index.js'),
+    entry: pathTo('src/index.js'),
     output: {
-      path: resolve(__dirname, 'dist'),
+      path: pathTo('dist'),
       filename:
         isProd
           ? '[name].[hash].js'
           : '[name].js',
       clean: true,
-      assetModuleFilename:
-        isProd
-          ? '[name].[hash][ext]'
-          : '[name][ext]',
+      assetModuleFilename: assetFilename('', isProd)
     },
     devServer: {
       port: 3000,
@@ -28,14 +25,14 @@ module.exports = () => {
       static: {
         directory:
           isProd
-            ? resolve(__dirname, 'dist')
-            : resolve(__dirname, 'src')
+            ? pathTo('dist')
+            : pathTo('src')
       },
     },
     devtool: isProd ? false : 'source-map',
     plugins: [
       new HTMLWebpackPlugin({
-        template: resolve(__dirname, './src/index.html'),
+        template: pathTo('./src/index.html'),
         filename: 'index.html',
         minify: isProd,
       }),
@@ -64,50 +61,35 @@ module.exports = () => {
           },
         },
         {
-          test: /\.(sass)$/,
+          test: /\.(pcss)$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            {
-              loader: "postcss-loader",
-              options: {
-                postcssOptions: {
-                  plugins: [
-                    [
-                      "postcss-preset-env",
-                      {
-                        browsers: "last 3 versions",
-                        autoprefixer: { grid: true },
-                      },
-                    ],
-                  ],
-                },
-              },
-            },
-            'sass-loader',
+            'postcss-loader'
           ],
         },
         {
           test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
           type: 'asset/resource',
           generator: {
-            filename:
-              isProd
-                ? 'assets/images/[name].[hash][ext]'
-                : 'assets/images/[name][ext]'
+            filename: assetFilename('assets/images/', isProd)
           }
         },
         {
           test: /\.(woff(2)?|eot|ttf|otf|)$/,
           type: 'asset/resource',
           generator: {
-            filename:
-              isProd
-                ? 'assets/fonts/[name].[hash][ext]'
-                : 'assets/fonts/[name][ext]'
+            filename: assetFilename('assets/fonts/', isProd)
           }
         },
       ]
     }
   }
 }
+
+const pathTo = (path) => resolve(__dirname, path)
+
+const assetFilename = (folder, isProd) =>
+  isProd
+    ? `${folder}[name].[hash][ext]`
+    : `${folder}[name][ext]`

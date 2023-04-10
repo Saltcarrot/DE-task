@@ -1,4 +1,4 @@
 {
-  "customSyntax": "postcss-sass",
+  "customSyntax": "postcss",
   "rules": {}
 }

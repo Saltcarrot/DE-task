@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Galien';
+  src: url("../assets/fonts/GalienRegular.eot") format('EOT'), url("../assets/fonts/GalienRegular.ttf") format('TTF'), url("../assets/fonts/GalienRegular.woff") format('WOFF');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url("../assets/fonts/GilroyRegular.eot") format('EOT'), url("../assets/fonts/GilroyRegular.ttf") format('TTF'), url("../assets/fonts/GilroyRegular.woff") format('WOFF');
+  font-style: normal;
+  font-weight: 300;
+}
+
+:root {
+  --grey-1: #E5E5E5;
+
+  --blue-1: #1F3F68;
+  --blue-1-2: rgba(31, 63, 104, .2);
+  --blue-2: #316099;
+  --blue-3: #356EAD;
+  --blue-3-4: #AEC5DE;
+  --blue-4: #5A98D0;
+  --blue-5: #98C3E8;
+  --red-1: #E85656;
+
+  --shadow-1: 5px 20px 50px rgba(16, 112, 177, 0.2);
+  --shadow-2: 5px 10px 20px rgba(53, 110, 173, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 162%;
+  letter-spacing: 0.05em;
+  color: var(--blue-1);
+
+  overflow: hidden auto;
+
+  &.fixed {
+    overflow: hidden;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 188%;
+  color: inherit;
+
+  border: none;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.header, .footer {
+  .logo {
+    height: 32px;
+    width: 48px;
+  }
+}
+
+@media all and (max-width: 1279px) {
+  body {
+    font-size: 14px;
+  }
+}

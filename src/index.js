@@ -1,6 +1,6 @@
-import {usePageScroll, useForm, useModal, useFetch, useResultModal} from './js'
-import './style/index.sass'
-import './home.sass'
+import { usePageScroll, useForm, useModal, useFetch, useResultModal } from './js'
+import './style/index.pcss'
+import './home.pcss'
 
 document.addEventListener('DOMContentLoaded', () => {
   usePageScroll()
