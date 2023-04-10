@@ -1,4 +1,4 @@
-import { usePageScroll, useForm, useModal } from './js'
+import {usePageScroll, useForm, useModal, useFetch} from './js'
 import './style/index.sass'
 import './home.sass'
 
@@ -14,31 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const onSubmit = (values) => {
     disableForm()
 
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      body: JSON.stringify({
-        title: `New post`,
-        body: `${values.email} ${values.name} ${values.message}`,
-        userId: 1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
+    fetchFeedbackData(values)
+      .then(res => {
+        resultModalText.innerHTML =
+          res
+            ? 'Your message successfully sent!'
+            : 'Form sent unsuccessful'
+      })
+      .catch(err => {
+        resultModalText.innerHTML = err
+      })
+      .finally(() => {
         closeFormModal()
         resetForm()
         enableForm()
 
-        if (res.id) {
-          resultModalText.innerHTML = 'Your message successfully sent!'
-          onResultModalOpenHandler()
-        } else {
-          resultModalText.innerHTML = 'Form sent unsuccessful'
-          onResultModalOpenHandler()
-        }
+        onResultModalOpenHandler()
       })
   }
 
   const { resetForm, disableForm, enableForm } = useForm(onSubmit)
+  const { fetchFeedbackData } = useFetch()
 
   const {
     openModal: onFeedbackBtnCLickHandler,
