@@ -94,7 +94,7 @@
             <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
           </div>
           <div class="right">
-            <button class="button blue feedback-btn">Let’s Talk</button>
+            <button class="button blue feedback-btn" data-action-btn="feedback-btn">Let’s Talk</button>
           </div>
         </div>
         <div class="footer-middle">
@@ -158,61 +158,101 @@
       </div>
     </footer>
 
-    <div class="modal-bg hidden" id="result-modal">
-      <div class="modal-container">
-        <button class="button-icon modal-close-btn">
+    <div
+      id="result-modal"
+      class="modal-bg hidden"
+      data-modal="result-modal"
+    >
+      <div class="modal-container" data-modal-container>
+        <button class="button-icon modal-close-btn" data-modal-close>
           <img src="assets/images/cross.svg" alt="Close" class="icon">
         </button>
         <div class="modal-content">
-          <p class="text"></p>
+          <p class="text" data-modal-text></p>
         </div>
       </div>
     </div>
 
-    <div class="modal-bg hidden" id="feedback-modal">
-      <div class="modal-container">
-        <button class="button-icon modal-close-btn">
+    <div
+      id="feedback-modal"
+      class="modal-bg hidden"
+      data-modal="feedback-modal"
+    >
+      <div class="modal-container" data-modal-container>
+        <button class="button-icon modal-close-btn" data-modal-close>
           <img src="assets/images/cross.svg" alt="Close" class="icon">
         </button>
         <div class="modal-content">
-          <form name="feedback-form" class="form" id="feedback-form">
+          <form
+            id="feedback-form"
+            name="feedback-form"
+            class="form"
+            data-form="feedback-form"
+          >
             <h4 class="form-title">SEND US MESSAGE</h4>
             <div class="form-fields">
               <div class="form-group">
-                <label for="name" class="form-label">Full Name</label>
+                <label
+                  for="name"
+                  class="form-label"
+                  data-form-label
+                >
+                  Full Name
+                </label>
                 <input
                   type="text"
                   name="name"
                   id="name"
                   class="form-input"
                   placeholder="Your Name"
+                  data-form-input="name"
                 >
-                <span class="form-error"></span>
+                <span class="form-error" data-form-error></span>
               </div>
               <div class="form-group">
-                <label for="email" class="form-label">Email</label>
+                <label
+                  for="email"
+                  class="form-label"
+                  data-form-label
+                >
+                  Email
+                </label>
                 <input
                   type="text"
                   name="email"
                   id="email"
                   class="form-input"
                   placeholder="Your Email"
+                  data-form-input="email"
                 >
-                <span class="form-error"></span>
+                <span class="form-error" data-form-error></span>
               </div>
               <div class="form-group">
-                <label for="message" class="form-label">Message</label>
+                <label
+                  for="message"
+                  class="form-label"
+                  data-form-label
+                >
+                  Message
+                </label>
                 <textarea
                   name="message"
                   id="message"
                   class="form-input textarea"
                   placeholder="Your Message"
+                  data-form-input="message"
                 ></textarea>
-                <span class="form-error"></span>
+                <span class="form-error" data-form-error></span>
               </div>
             </div>
             <div class="form-bottom">
-              <button type="submit" class="button blue">Submit</button>
+              <button
+                type="submit"
+                class="button blue"
+                data-form-submit
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>

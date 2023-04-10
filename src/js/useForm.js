@@ -1,48 +1,70 @@
 export const useForm = (callbackOnSubmit) => {
-  const form = document.forms['feedback-form']
+  const form = document.querySelector('[data-form="feedback-form"]')
 
-  const inputs = form.querySelectorAll(`.form-input`)
-  const labels = form.querySelectorAll('label')
-  const errors = form.querySelectorAll('.form-error')
+  const inputs = form.querySelectorAll('[data-form-input]')
+  const labels = form.querySelectorAll('[data-form-label]')
+  const errors = form.querySelectorAll('[data-form-error]')
 
-  const submitBtn = form.querySelector('button[type="submit"]')
+  const submitBtn = form.querySelector('[data-form-submit]')
   const submitBtnInitHTML = submitBtn.innerHTML
 
-  const checkInput = (input, idx) => {
-    if (input.value === '') {
+  const setFieldGroupInvalid = (input, message) => {
+    const label = input.previousElementSibling
+    const error = input.nextElementSibling
+
+    if (!input.classList.contains('error'))
       input.classList.add('error')
-      labels[idx].classList.add('error')
-      errors[idx].innerHTML = 'Required field'
+    if (!label.classList.contains('error'))
+      label.classList.add('error')
+    if (error.innerHTML === '') error.innerHTML = message
+  }
 
-      return false
-    }
-
-    if (
-      input.name === 'email' &&
-      !input.value.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/)
-    ) {
-      input.classList.add('error')
-      labels[idx].classList.add('error')
-      errors[idx].innerHTML = 'Invalid email'
-
-      return false
-    }
-
-    if (input.name === 'name' && input.value.trim().split(' ').length !== 2) {
-      input.classList.add('error')
-      labels[idx].classList.add('error')
-      errors[idx].innerHTML = 'Invalid full name'
-
-      return false
-    }
+  const setFieldGroupValid = (input) => {
+    const label = input.previousElementSibling
+    const error = input.nextElementSibling
 
     if (input.classList.contains('error'))
       input.classList.remove('error')
-    if (labels[idx].classList.contains('error'))
-      labels[idx].classList.remove('error')
-    if (errors[idx].innerHTML !== '') errors[idx].innerHTML = ''
+    if (label.classList.contains('error'))
+      label.classList.remove('error')
+    if (error.innerHTML !== '') error.innerHTML = ''
+  }
 
-    return true
+  const checkInput = (input) => {
+    switch (input.dataset.formInput) {
+      case 'email': {
+        if (
+          !input.value.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/)
+        ) {
+          setFieldGroupInvalid(input, 'Invalid email')
+
+          return false
+        }
+
+        setFieldGroupValid(input)
+        return true
+      }
+      case 'name': {
+        if (input.value.trim().split(' ').length !== 2) {
+          setFieldGroupInvalid(input, 'Invalid full name')
+
+          return false
+        }
+
+        setFieldGroupValid(input)
+        return true
+      }
+      default: {
+        if (input.value === '') {
+          setFieldGroupInvalid(input, 'Required field')
+
+          return false
+        }
+
+        setFieldGroupValid(input)
+        return true
+      }
+    }
   }
 
   const onSubmitHandler = (event) => {
@@ -50,8 +72,8 @@ export const useForm = (callbackOnSubmit) => {
 
     const validInputs = []
 
-    inputs.forEach((input, idx) =>
-      validInputs.push(checkInput(input, idx))
+    inputs.forEach((input) =>
+      validInputs.push(checkInput(input))
     )
 
     if (validInputs.filter(valid => !!valid).length === inputs.length) {
